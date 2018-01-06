@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sum of numbers</title>
+    <style media="screen">
+      body{
+        font-family: sans-serif;
+      }
+      #app{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 500px;
+        margin: 0 auto;
+        text-align: center;
+        border: 1px solid black;
+        position: relative;
+      }
+      #exp{
+        margin-bottom: 40px;
+      }
+      canvas{
+        background-color: transparent;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+      }
+      span{
+        font-weight: bolder;
+        font-size: 1.5rem;
+        padding: 5px 7px;
+      }
+    </style>
+  </head>
+  <body>
+      <div id="app">
+        <h2>Сложите два числа.</h2>
+        <div id="exp">
+          <span id="numA"></span>
+          <span> + </span>
+          <span id="numB"></span>
+          <span> = </span>
+          <span id="sum"></span>
+        </div>
+        <canvas id="numbers" width="500" height="120">
+        </canvas>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+      <script src="./main.js"></script>
+  </body>
+</html>
