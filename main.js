@@ -149,9 +149,9 @@
                   'height': '30px',
                   'position': 'absolute',
                   'display' : 'none',
-                  'bottom' : '25px',
+                  'bottom' : '28px',
                   'left' : radius,
-                  'font-size' : '1.4rem',
+                  'font-size' : '1.6rem',
                   'color' : 'black'
     });
 
@@ -159,9 +159,9 @@
                   'height': '30px',
                   'position': 'absolute',
                   'display' : 'none',
-                  'bottom' : '25px',
+                  'bottom' : '28px',
                   'left' : radius2 + lenHorda,
-                  'font-size' : '1.4rem',
+                  'font-size' : '1.6rem',
                   'color' : 'black'
     });
 
