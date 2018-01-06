@@ -118,6 +118,8 @@
 
     const input1 = document.createElement('input');   // create first input field
     const input2 = document.createElement('input');   // create second input field
+    const span1 = document.createElement('span');
+    const span2 = document.createElement('span');
 
     // add styles first input field
     $(input1).css({'width':'25px',
@@ -136,16 +138,41 @@
                   'height': '30px',
                   'position': 'absolute',
                   'display' : 'none',
-                  'bottom' : '25',
+                  'bottom' : '20',
                   'left' : radius2 + lenHorda,
                   'font-size' : '1.3rem',
                   'padding-left' : '10px',
                   'padding-right' : '0'
     });
 
-    // Append inputs on DOM
+    $(span1).css({'width':'25px',
+                  'height': '30px',
+                  'position': 'absolute',
+                  'display' : 'none',
+                  'bottom' : '25px',
+                  'left' : radius,
+                  'font-size' : '1.4rem',
+                  'color' : 'black'
+    });
+
+    $(span2).css({'width':'25px',
+                  'height': '30px',
+                  'position': 'absolute',
+                  'display' : 'none',
+                  'bottom' : '25px',
+                  'left' : radius2 + lenHorda,
+                  'font-size' : '1.4rem',
+                  'color' : 'black'
+    });
+
+    $(span1).text(a);
+    $(span2).text(b);
+
+    // Append elements on DOM
     $('#app').append($(input1));
     $('#app').append($(input2));
+    $('#app').append($(span1));
+    $('#app').append($(span2));
 
     // Show first input
     setTimeout(function() {
@@ -155,12 +182,17 @@
     // Handle event on first input
     $(input1).on('keydown',function () {
       setTimeout(function() {
-        if($(input1).val() != a){
+        if($(input1).val() == ''){
+          $(input1).animate({'color' : 'black'}, 150);
+          $('#numA').animate({'background-color':'transparent', 'color' : 'black'}, 200);
+        }else if($(input1).val() != a){
           $(input1).css({'color':'red'});
-          $('#numA').animate({'background-color':'#ff7732', 'color' : '#fff'}, 300);
+          $('#numA').animate({'background-color':'#ff7732', 'color' : '#fff'}, 200);
         }else{
+          $(input1).animate({'color' : 'black'}, 150);
           $(input1).fadeOut(300);
-          $('#numA').animate({'background-color':'transparent', 'color' : 'black'}, 300);
+          $(span1).fadeIn(300);
+          $('#numA').animate({'background-color':'transparent', 'color' : 'black'}, 200);
           drawArrow(x2,y2,radius2);
           $(input2).fadeIn(300);
         }
@@ -170,12 +202,16 @@
     // Handle event on second input
     $(input2).on('keydown',function () {
       setTimeout(function() {
-        if($(input2).val() != b){
+        if($(input2).val() == ''){
+          $(input2).animate({'color' : 'black'}, 150);
+          $('#numB').animate({'background-color':'transparent', 'color' : 'black'}, 200);
+        }else if($(input2).val() != b){
           $(input2).css({'color':'red'});
-          $('#numB').animate({'background-color':'#ff7732', 'color' : '#fff'}, 300);
+          $('#numB').animate({'background-color':'#ff7732', 'color' : '#fff'}, 200);
         }else{
           $(input2).fadeOut(300);
-          $('#numB').animate({'background-color':'transparent', 'color' : 'black'}, 300);
+          $(span2).fadeIn(300);
+          $('#numB').animate({'background-color':'transparent', 'color' : 'black'}, 200);
           $('#sum').text(sum).animate({'background-color':'green', 'color' : '#fff'}, 300);
         }
       }, 100)
