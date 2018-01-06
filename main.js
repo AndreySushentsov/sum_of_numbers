@@ -118,6 +118,7 @@
 
     const input1 = document.createElement('input');   // create first input field
     const input2 = document.createElement('input');   // create second input field
+    const input3 = document.createElement('input');
     const span1 = document.createElement('span');
     const span2 = document.createElement('span');
 
@@ -145,6 +146,19 @@
                   'padding-right' : '0'
     });
 
+    $(input3).css({'width':'100%',
+                  'height': '100%',
+                  'position': 'absolute',
+                  'display' : 'none',
+                  'top' : '0',
+                  'left' : '0',
+                  'font-size' : '1.3rem',
+                  'padding-left' : '10px',
+                  'padding-right' : '0'
+    });
+
+    // add styles second input field
+
     $(span1).css({'width':'25px',
                   'height': '30px',
                   'position': 'absolute',
@@ -171,6 +185,7 @@
     // Append elements on DOM
     $('#app').append($(input1));
     $('#app').append($(input2));
+    $('#sum').append($(input3));
     $('#app').append($(span1));
     $('#app').append($(span2));
 
@@ -212,9 +227,45 @@
           $(input2).fadeOut(300);
           $(span2).fadeIn(300);
           $('#numB').animate({'background-color':'transparent', 'color' : 'black'}, 200);
-          $('#sum').text(sum).animate({'background-color':'green', 'color' : '#fff'}, 300);
+          $(input3).fadeIn(300);
+          $('h2').text('Введите ответ и нажмите Enter');
+          // $('#sum').text(sum).animate({'background-color':'green', 'color' : '#fff'}, 300);
         }
       }, 100)
     });
+
+    $(input3).on('keydown',function (e) {
+      if(e.keyCode == 13){
+        setTimeout(function() {
+          console.log($(input3).val());
+          if($(input3).val() == ''){
+            $(input3).animate({'color' : 'black'}, 150);
+          }else if($(input3).val() != sum){
+            $(input3).css({'color':'red'});
+          }else{
+            $(input3).fadeOut(300);
+            $('#sum').text(sum);
+            $('h2').fadeOut(200);
+            $('h2').text('Правельно!');
+            setTimeout(function() {
+              $('h2').fadeIn(200);
+            },150);
+            $('#sum').text(sum).animate({'background-color':'green', 'color' : '#fff'}, 300);
+          }
+        }, 100)
+      }
+      // setTimeout(function() {
+      //   if($(input3).val() == ''){
+      //     $(input3).animate({'color' : 'black'}, 150);
+      //   }else if($(input2).val() != sum){
+      //     $(input3).css({'color':'red'});
+      //   }else{
+      //     $(input3).fadeOut(300);
+      //     $('#sum').text(sum);
+      //     $('#sum').text(sum).animate({'background-color':'green', 'color' : '#fff'}, 300);
+      //   }
+      // }, 100)
+    });
+
   }
 )();
