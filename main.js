@@ -36,29 +36,80 @@
     }
 
     // drawArrow
-    function drawArrow(arg, arg2, arg3) {
+    function drawArrow(arg, arg2, arg3, arg4) {
       ctx.beginPath();
       ctx.arc(arg, arg2, arg3, 3.48, 5.93);
       ctx.stroke();
+
+
+      if(arg4 == true){
+
+        if(a == 6){
+          ctx.beginPath();
+          ctx.moveTo((lenHorda + 19),82);
+          ctx.lineTo((lenHorda + 12),73);
+          ctx.moveTo((lenHorda + 19),82);
+          ctx.lineTo((lenHorda + 23),73);
+          ctx.stroke()
+        }else{
+          ctx.beginPath();
+          ctx.moveTo((lenHorda + 21),82);
+          ctx.lineTo((lenHorda + 15),75);
+          ctx.moveTo((lenHorda + 21),82);
+          ctx.lineTo((lenHorda + 23),75);
+          ctx.stroke()
+        }
+
+      }else{
+        if(b == 2){
+          ctx.beginPath();
+          ctx.moveTo((lenHorda + lenHorda2 +21),88);
+          ctx.lineTo((lenHorda + lenHorda2 +14),82);
+          ctx.moveTo((lenHorda + lenHorda2 +21),88);
+          ctx.lineTo((lenHorda + lenHorda2 +22),77);
+          ctx.stroke()
+        }else if(b == 5){
+          ctx.beginPath();
+          ctx.moveTo((lenHorda + lenHorda2 +24.5),78);
+          ctx.lineTo((lenHorda + lenHorda2 +18),74);
+          ctx.moveTo((lenHorda + lenHorda2 +24.5),78);
+          ctx.lineTo((lenHorda + lenHorda2 +26),71);
+          ctx.stroke()
+        }else{
+          ctx.beginPath();
+          ctx.moveTo((lenHorda + lenHorda2 +26),84);
+          ctx.lineTo((lenHorda + lenHorda2 +18),80);
+          ctx.moveTo((lenHorda + lenHorda2 +26),84);
+          ctx.lineTo((lenHorda + lenHorda2 +26),77);
+          ctx.stroke()
+        }
+      }
+
     }
 
 
     const a = getRandomInt(6,10);                     // first number
     const sum = getRandomInt(11, 15);                 // result of sum
     const b = sum - a;                                // second number
-
     const radius = a * 11.5;                          // radius first arrow
     const x = radius + 16;                            // x coordinate of center first arrow
     const y = (a == 6 || a == 7) ? 99 + a : 105 + a;  // y coordinate of center first arrow
 
     const lenHorda = length(radius,140);              // horda legth first arrow
 
+
+
     const radius2 = b * 11.5;                         // radius second arrow
     const x2 = (lenHorda + 20) + radius2;             // x coordinate of center second arrow
-    const y2 = (b <= 4) ? 93 : 110;                   // y coordinate of center second arrow
+    const y2 = (b <= 5) ? 95 : 110;                   // y coordinate of center second arrow
+
+    const lenHorda2 = length(radius2,140);
 
 
-    drawArrow(x,y,radius);                            //draw first arrow
+    //draw first arrow
+    setTimeout(function() {
+      drawArrow(x,y,radius,1);
+    }, 250);
 
     // add values of numbers in span elements
     $('#numA').text(a);
